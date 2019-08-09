@@ -19,10 +19,8 @@ class RegForm extends React.Component {
     componentDidMount(){
         axios
             .get('http://localhost:5000/api/restricted/data')
-            .then(res => {
-                console.log(res.data);
-                this.setState({dataList: res.data})
-                console.log(this.state)
+            .then(res => { 
+                this.setState({dataList: res.data});
             })
             .catch(err => {
                 console.log(err)
@@ -33,8 +31,7 @@ class RegForm extends React.Component {
     render() {
         return(
           
-        <div>
-
+        <>
             <h1> Registration Form </h1>
 
             <Form>
@@ -50,8 +47,7 @@ class RegForm extends React.Component {
             {this.state.dataList.map((data) => {
                 return <Data key={data.name} data={data} />
             })}
-
-        </div>
+        </>
         
         );
     };
